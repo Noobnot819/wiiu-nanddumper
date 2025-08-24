@@ -80,7 +80,6 @@ void default_config(cfw_config_t * config)
     //config->directLaunch = 0;
     //config->launchImage = 1;
     //config->noIosReload = 0;
-    //config->launchSysMenu = 1;
     //config->redNAND = 0;
     //config->seeprom_red = 0;
     //config->otp_red = 0;
@@ -90,6 +89,7 @@ void default_config(cfw_config_t * config)
     config->dumpMlc = 0;
     config->dumpOtp = 1;
     config->dumpSeeprom = 1;
+    config->launchSysMenu = 0;
 }
 
 /*int read_config(cfw_config_t * config)
