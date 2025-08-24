@@ -52,7 +52,7 @@ struct {
     { "Skip this menu on launch", "on", "off" },
     { "Show launch image", "on", "off" },
     { "Don't relaunch OS", "on", "off" },
-    { "Launch System Menu", "on", "off" },
+    { "no", "no", "no" },
     { "redNAND", "on", "off" },
     { "SEEPROM redirection", "on", "off" },
     { "OTP redirection", "on", "off" },
@@ -62,6 +62,7 @@ struct {
     { "Dump MLC (8GB/32GB)", "yes", "no" },
     { "Dump OTP (1KB)", "yes", "no" },
     { "Dump SEEPROM (1KB)", "yes", "no" },
+    { "Launch System Menu", "yes", "no" },
 };
 
 static void console_print_pos(int x, int y, const char *format, ...)
@@ -169,6 +170,9 @@ int ShowMenu(cfw_config_t * currentConfig)
                 case 4:
                     config.dumpSeeprom = !config.dumpSeeprom;
                     break;
+				case 5:
+                    config.launchSysMenu = !config.launchSysMenu;
+                    break;
                 /*case 0:
                     config.viewMode = !config.viewMode;
                     max_config_item = config.viewMode ? MAX_CONFIG_SETTINGS_EXPERT : MAX_CONFIG_SETTINGS_DEFAULT;
@@ -238,7 +242,7 @@ int ShowMenu(cfw_config_t * currentConfig)
 
             console_print_pos(x_offset, 1, "                -- NAND Dumper --");
 
-            console_print_pos(x_offset, 3, "Select your options and press A to launch.");
+            console_print_pos(x_offset, 3, "Select the options that you want to dump and press A to launch.");
             console_print_pos(x_offset, 4, "Press HOME to exit back to HBL.");
             //console_print_pos(x_offset, 5, "Hold B on start to force enter this menu");
 
